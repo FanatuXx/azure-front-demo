@@ -1,0 +1,16 @@
+<h1>Todos</h1>
+
+<input #title placeholder="Nouvelle tâche" (keyup.enter)="add(title)" />
+<button (click)="add(title)">Ajouter</button>
+
+<ul>
+  @for (todo of todos(); track todo.id) {
+    <li>
+      <input type="checkbox" [checked]="todo.isDone" (change)="toggle(todo)" />
+      <span [class.done]="todo.isDone">{{ todo.title }}</span>
+      <button (click)="remove(todo)">Supprimer</button>
+    </li>
+  } @empty {
+    <li>Aucune tâche</li>
+  }
+</ul>
